@@ -22,6 +22,7 @@ const locationSlice = createSlice({
       state.locationResponse.isLoading = false;
       state.locationResponse.error = payload;
     },
+    resetLocation: () => initialState,
   },
 });
 

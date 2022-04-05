@@ -7,8 +7,12 @@ import { BaseResponse } from "@app/redux/api-models/location";
 
 import { locationActions } from "./slices";
 
-const { setLocationRequest, setLocationSuccess, setLocationFailure } =
-  locationActions;
+const {
+  setLocationRequest,
+  setLocationSuccess,
+  setLocationFailure,
+  resetLocation,
+} = locationActions;
 
 const getLocationsData = (query: string) => {
   return locationInstance.get<BaseResponse>(
@@ -34,6 +38,7 @@ const callLocationApi =
 
 const actions = {
   callLocationApi,
+  resetLocation,
 };
 
 export default actions;
