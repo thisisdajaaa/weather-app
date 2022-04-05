@@ -4,8 +4,10 @@ const palette = {
   black: "#000",
   white: "#fff",
 
-  dark100: "#6e6969",
-  dark200: "#1C1C1C",
+  grey100: "#DADADA",
+  grey200: "#6e6969",
+
+  dark100: "#1C1C1C",
 
   red100: "#E81F1F",
 };

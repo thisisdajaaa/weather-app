@@ -17,7 +17,7 @@ const HeaderStyles = StyleSheet.create({
   },
   btnLogout: {
     borderRadius: 3,
-    backgroundColor: theme.colors.dark100,
+    backgroundColor: theme.colors.grey200,
   },
   logoutContainer: {
     width: 86,
