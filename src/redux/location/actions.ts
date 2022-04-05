@@ -14,12 +14,24 @@ const {
   resetLocation,
 } = locationActions;
 
+/**
+ * Trigger's the axios call for the locations GET method
+ * @param query
+ * @returns query output
+ */
 const getLocationsData = (query: string) => {
   return locationInstance.get<BaseResponse>(
     `direct?q=${query}&limit=5&appid=${OPEN_WEATHER_MAP_KEY}`
   );
 };
 
+/**
+ * Processes the location API call
+ * and stores the corresponding data
+ * in redux state
+ * @param payload
+ * @returns void
+ */
 const callLocationApi =
   (payload: string): AppThunk =>
   async (dispatch: AppDispatch) => {

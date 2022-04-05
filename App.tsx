@@ -7,7 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLoadAssets, useMount } from "@app/hooks";
 import { RootNavigation } from "@app/navigation";
-import { internetCheck } from "@app/utils";
+import { checkInternet } from "@app/utils";
 import store from "@app/redux/store";
 
 const fonts = {
@@ -23,8 +23,13 @@ export default function App() {
   const [initialState, setInitialState] = useState<InitialState | undefined>();
   const ready = useLoadAssets([], fonts || {});
 
+  /**
+   * Checks the internet connection
+   * on initial load of application
+   * @returns void
+   */
   const onInitialLoad = () => {
-    internetCheck();
+    checkInternet();
 
     (async () => {
       await SplashScreen.preventAutoHideAsync();
@@ -33,12 +38,21 @@ export default function App() {
 
   useMount(onInitialLoad);
 
+  /**
+   * Hide's SplashScreen once assets has been
+   * successfully loaded
+   * @returns void
+   */
   useEffect(() => {
     (async () => {
       if (ready) await SplashScreen.hideAsync();
     })();
   }, [isNavigationReady, ready]);
 
+  /**
+   * Gets the inital state of the navigation container
+   * @returns void
+   */
   useEffect(() => {
     const restoreState = async () => {
       try {
@@ -53,20 +67,21 @@ export default function App() {
         setIsNavigationReady(true);
       }
     };
-    if (!isNavigationReady) {
-      restoreState();
-    }
+
+    if (!isNavigationReady) restoreState();
   }, [isNavigationReady]);
 
+  /**
+   * Sets the inital state of the navigation container
+   * @returns void
+   */
   const onStateChange = useCallback(
     (state) =>
       AsyncStorage.setItem(NAVIGATION_STATE_KEY, JSON.stringify(state)),
     []
   );
 
-  if (!ready || !isNavigationReady) {
-    return null;
-  }
+  if (!ready || !isNavigationReady) return null;
 
   return (
     <Provider store={store}>

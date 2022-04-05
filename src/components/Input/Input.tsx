@@ -17,6 +17,7 @@ const Input: FC<PropsType> = (props) => {
       keyboardType="default"
       onChangeText={onChange}
       maxLength={maxLength}
+      errorStyle={InputStyles.txtError}
       leftIcon={<Ionicons name="search" size={24} color="black" />}
       containerStyle={InputStyles.container}
     />

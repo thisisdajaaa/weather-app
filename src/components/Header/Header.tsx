@@ -6,6 +6,7 @@ import { theme } from "@app/styles";
 import { authClient } from "@app/utils";
 import { actions as authActions } from "@app/redux/auth";
 import { actions as locationActions } from "@app/redux/location";
+import { actions as weatheractions } from "@app/redux/weather";
 import { useAuth } from "@app/hooks";
 import Button from "@app/components/Button";
 
@@ -24,10 +25,11 @@ const Header: FC<PropsType> = (props) => {
     await logout();
     dispatch(authActions.setAuthLogout());
     dispatch(locationActions.resetLocation());
+    dispatch(weatheractions.resetWeather());
   };
 
   const renderLeftComponent = () => (
-    <FontAwesome name="cloud" size={24} color={theme.colors.black} />
+    <FontAwesome name="cloud" size={34} color={theme.colors.secondary} />
   );
 
   const renderRightComponent = () =>

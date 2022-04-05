@@ -4,8 +4,10 @@ import { isEmpty } from "lodash";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { actions, selectors } from "@app/redux/location";
+import { useAuth } from "@app/hooks";
 import Header from "@app/components/Header";
 import Input from "@app/components/Input";
+import Profile from "@app/components/Profile";
 import Button from "@app/components/Button";
 
 import HomeStyles from "./styles";
@@ -13,20 +15,31 @@ import HomeStyles from "./styles";
 const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
+  const { authData } = useAuth();
 
   const [city, setCity] = useState<string>("");
 
   const locationReponse = useSelector(selectors.locationResponse);
 
+  /**
+   * Dispatches the callLocationApi action
+   * @returns void
+   */
   const handleSearch = () => {
     dispatch(actions.callLocationApi(city));
   };
 
+  /**
+   * If response is valid then navigate
+   * to weather screen with the returned
+   * longitude and latitude of the city
+   * @returns void
+   */
   useEffect(() => {
-    const isFormValid =
+    const isResponsevalid =
       !locationReponse.isLoading && !isEmpty(locationReponse.response);
 
-    if (isFormValid) {
+    if (isResponsevalid) {
       const { lat, lon } = locationReponse.response[0];
 
       navigate("Weather", { latitude: lat, longitude: lon });
@@ -38,6 +51,8 @@ const HomeScreen: React.FC = () => {
       <Header hasBottomDivider />
 
       <View style={HomeStyles.container}>
+        <Profile name={authData?.name} nickname={authData?.nickname} />
+
         <Input
           value={city}
           placeholder="City"

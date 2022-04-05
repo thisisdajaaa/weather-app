@@ -10,7 +10,7 @@ const InputStyles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 1,
     borderStyle: "solid",
-    borderColor: theme.colors.dark100,
+    borderColor: theme.colors.grey200,
   },
   txtError: {
     display: "none",

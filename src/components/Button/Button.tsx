@@ -9,7 +9,6 @@ import React, { FC } from "react";
 import { Button as RnButton } from "react-native-elements";
 
 import type { PropsType } from "./types";
-import { OPACITY } from "./config";
 import ButtonStyles from "./styles";
 
 const Button: FC<PropsType> = (props) => {
@@ -27,7 +26,7 @@ const Button: FC<PropsType> = (props) => {
   return (
     <RnButton
       title={title}
-      activeOpacity={OPACITY}
+      activeOpacity={0.8}
       titleStyle={titleStyle}
       buttonStyle={[ButtonStyles.container, buttonStyle]}
       containerStyle={containerStyle}
