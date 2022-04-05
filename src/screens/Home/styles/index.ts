@@ -16,12 +16,6 @@ const HomeStyles = StyleSheet.create({
     marginTop: 16,
     alignSelf: "center",
   },
-  errorMessage: {
-    ...theme.textLight,
-    marginLeft: 12,
-    marginTop: 4,
-    color: theme.colors.red100,
-  },
 });
 
 export default HomeStyles;

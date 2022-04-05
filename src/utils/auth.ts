@@ -1,9 +1,10 @@
 import * as AuthSession from "expo-auth-session";
 import jwtDecode from "jwt-decode";
-import { AUTH0_CLIENT_ID, AUTH_CLIENT_DOMAIN } from "@env";
-import { storage } from "./storage";
 import { Platform } from "react-native";
+import { AUTH0_CLIENT_ID, AUTH_CLIENT_DOMAIN } from "@env";
 import type { AuthSessionData } from "@app/types/auth";
+
+import { storage } from "./storage";
 
 const authClient = () => {
   /**
