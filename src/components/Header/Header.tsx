@@ -5,16 +5,30 @@ import type { PropsType } from "./types";
 import HeaderStyles from "./styles";
 import { theme } from "@app/styles";
 import { FontAwesome } from "@expo/vector-icons";
+import Button from "@app/components/Button";
+import { useDispatch } from "react-redux";
+import { authClient } from "@app/utils";
+import { actions } from "@app/redux/auth";
+import { useAuth } from "@app/hooks";
 
 const Header: FC<PropsType> = (props) => {
   const {
     centerComponent,
     containerStyle,
     placement,
-    rightComponent,
     barStyle,
     hasBottomDivider,
   } = props;
+
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useAuth();
+
+  const { logout } = authClient();
+
+  const handleLogout = async () => {
+    await logout();
+    dispatch(actions.setAuthLogout());
+  };
 
   return (
     <RnHeader
@@ -33,7 +47,17 @@ const Header: FC<PropsType> = (props) => {
         <FontAwesome name="cloud" size={24} color={theme.colors.black} />
       }
       centerComponent={centerComponent}
-      rightComponent={rightComponent}
+      rightComponent={
+        isAuthenticated ? (
+          <Button
+            onPress={() => handleLogout()}
+            titleStyle={HeaderStyles.txtLogout}
+            buttonStyle={HeaderStyles.btnLogout}
+            containerStyle={HeaderStyles.LogoutContainer}
+            title="Logout"
+          />
+        ) : undefined
+      }
     />
   );
 };

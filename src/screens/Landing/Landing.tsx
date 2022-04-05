@@ -7,21 +7,17 @@ import Text from "@app/components/Text";
 import Button from "@app/components/Button";
 import Header from "@app/components/Header";
 import LandingStyles from "./styles";
-import { useNavigation } from "@react-navigation/native";
 
 const LandingScreen: React.FC = () => {
   const dispatch = useDispatch();
   const { login } = authClient();
-  const { navigate } = useNavigation();
 
   /**
    * Triggers authClient login then navigate user to Home screen
    * @returns void
    */
   const handleLogin = async () => {
-    await login();
-    dispatch(actions.setAuthLogin());
-    navigate("Home");
+    await login(() => dispatch(actions.setAuthLogin()));
   };
 
   return (

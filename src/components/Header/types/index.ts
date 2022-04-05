@@ -21,5 +21,4 @@ export type PropsType = {
   placement?: Placement;
   containerStyle?: StyleProp<ViewStyle>;
   centerComponent?: HeaderSubComponent;
-  rightComponent?: HeaderSubComponent;
 };

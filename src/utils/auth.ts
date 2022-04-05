@@ -3,21 +3,21 @@ import jwtDecode from "jwt-decode";
 import { AUTH0_CLIENT_ID, AUTH_CLIENT_DOMAIN } from "@env";
 import { storage } from "./storage";
 import { Platform } from "react-native";
+import { AuthSessionData } from "@app/types/auth";
 
 const authClient = () => {
   /**
    * Decrypt Auth0 access token and store in storage
-   * @param authRequest
-   * @param discovery
-   * @param redirectUrl
+   * @param authSessionData
    * @returns void
    */
   const secureAuthToken = async (
-    authRequest: AuthSession.AuthRequest,
-    discovery: AuthSession.DiscoveryDocument,
-    redirectUrl: string
+    authSessionData: AuthSessionData,
+    dispatchedAction: () => void
   ) => {
     try {
+      const { authRequest, discovery, redirectUrl } = authSessionData;
+
       // Get the authorization code
       const authorizeResult = await authRequest.promptAsync(discovery, {
         useProxy: true,
@@ -40,6 +40,7 @@ const authClient = () => {
         const decodedInformation = jwtDecode(String(tokenResult.idToken));
 
         await storage.storeObject("user", decodedInformation);
+        dispatchedAction();
       }
     } catch (error) {
       console.error(error);
@@ -50,7 +51,7 @@ const authClient = () => {
    * Triggers Auth0 Login
    * @returns void
    */
-  const login = async () => {
+  const login = async (dispatchedAction: () => void) => {
     try {
       const discovery = await AuthSession.fetchDiscoveryAsync(
         AUTH_CLIENT_DOMAIN
@@ -72,7 +73,13 @@ const authClient = () => {
 
       const authRequest = new AuthSession.AuthRequest(authRequestOptions);
 
-      await secureAuthToken(authRequest, discovery, redirectUrl);
+      const authSession: AuthSessionData = {
+        authRequest,
+        discovery,
+        redirectUrl,
+      };
+
+      await secureAuthToken(authSession, dispatchedAction);
     } catch (error) {
       console.error("AuthAction.login failed", error);
     }

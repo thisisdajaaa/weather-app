@@ -1,3 +1,5 @@
+import * as AuthSession from "expo-auth-session";
+
 export type UserInformation = {
   aud: string;
   auth_time: string;
@@ -9,4 +11,10 @@ export type UserInformation = {
   picture: string;
   sub: string;
   updated_at: string;
+};
+
+export type AuthSessionData = {
+  authRequest: AuthSession.AuthRequest;
+  discovery: AuthSession.DiscoveryDocument;
+  redirectUrl: string;
 };
