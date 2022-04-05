@@ -1,4 +1,6 @@
 const palette = {
+  primary: "#0AA351",
+
   black: "#000",
   white: "#fff",
 

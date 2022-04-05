@@ -17,7 +17,6 @@ const Header: FC<PropsType> = (props) => {
   const {
     centerComponent,
     containerStyle,
-    leftComponent,
     placement,
     rightComponent,
     barStyle,
