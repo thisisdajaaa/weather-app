@@ -12,4 +12,8 @@ declare global {
 export type RootStackParamList = {
   Landing: undefined;
   Home: undefined;
+  Weather: {
+    latitude: number;
+    longitude: number;
+  };
 };

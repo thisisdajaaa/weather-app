@@ -18,10 +18,8 @@ const LandingStyles = StyleSheet.create({
     ...theme.textLight,
     textAlign: "center",
     fontWeight: "700",
-    position: "absolute",
   },
   btnLogin: {
-    height: 32,
     borderRadius: 3,
   },
   loginContainer: {

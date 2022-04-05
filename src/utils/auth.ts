@@ -49,6 +49,7 @@ const authClient = () => {
 
   /**
    * Triggers Auth0 Login
+   * @param dispatchedAction
    * @returns void
    */
   const login = async (dispatchedAction: () => void) => {

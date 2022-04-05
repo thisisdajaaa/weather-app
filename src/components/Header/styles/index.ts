@@ -14,16 +14,13 @@ const HeaderStyles = StyleSheet.create({
     ...theme.textLight,
     textAlign: "center",
     fontWeight: "700",
-    position: "absolute",
   },
   btnLogout: {
     borderRadius: 3,
     backgroundColor: theme.colors.dark100,
   },
-  LogoutContainer: {
+  logoutContainer: {
     width: 86,
-    bottom: "15%",
-    height: 0,
   },
 });
 

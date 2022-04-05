@@ -6,6 +6,7 @@ import { actions } from "@app/redux/auth";
 import Text from "@app/components/Text";
 import Button from "@app/components/Button";
 import Header from "@app/components/Header";
+
 import LandingStyles from "./styles";
 
 const LandingScreen: React.FC = () => {
@@ -39,11 +40,11 @@ const LandingScreen: React.FC = () => {
         />
 
         <Button
-          onPress={() => handleLogin()}
-          titleStyle={LandingStyles.txtLogin}
+          title="Login"
           buttonStyle={LandingStyles.btnLogin}
           containerStyle={LandingStyles.loginContainer}
-          title="Login"
+          titleStyle={LandingStyles.txtLogin}
+          onPress={() => handleLogin()}
         />
       </View>
     </>

@@ -53,7 +53,7 @@ const Header: FC<PropsType> = (props) => {
             onPress={() => handleLogout()}
             titleStyle={HeaderStyles.txtLogout}
             buttonStyle={HeaderStyles.btnLogout}
-            containerStyle={HeaderStyles.LogoutContainer}
+            containerStyle={HeaderStyles.logoutContainer}
             title="Logout"
           />
         ) : undefined
