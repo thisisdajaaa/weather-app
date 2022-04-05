@@ -1,6 +1,39 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-native",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "module": "es2015",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/api": ["src/api"],
+      "@app/components/*": ["src/components/*"],
+      "@app/constants/*": ["src/constants/*"],
+      "@app/hooks": ["src/hooks"],
+      "@app/navigation": ["src/navigation"],
+      "@app/redux/*": ["src/redux/*"],
+      "@app/screens/*": ["src/screens/*"],
+      "@app/types/*": ["src/types/*"],
+      "@app/utils": ["src/utils"]
+    }
+  },
+  "typeRoots": ["./src/types"],
+  "exclude": ["node_modules"],
+  "extends": "expo/tsconfig.base"
 }
