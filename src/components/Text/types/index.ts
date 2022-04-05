@@ -1,9 +1,3 @@
-/**
- *
- * @format
- *
- */
-
 import { StyleProp, TextStyle } from "react-native";
 
 type EllipsizeMode = "head" | "middle" | "tail" | "clip";

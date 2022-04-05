@@ -1,10 +1,3 @@
-/**
- *
- * Header
- * @format
- *
- */
-
 import React, { FC } from "react";
 import { Header as RnHeader } from "react-native-elements";
 

@@ -1,9 +1,3 @@
-/**
- *
- * @format
- *
- */
-
 import { ReactElement } from "react";
 import { StyleProp, TextProps, TextStyle, ViewStyle } from "react-native";
 import { IconObject } from "react-native-elements/dist/icons/Icon";

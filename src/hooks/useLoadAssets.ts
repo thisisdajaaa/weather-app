@@ -6,6 +6,12 @@ import usePromiseAll from "./usePromiseAll";
 
 type FontSource = Parameters<typeof Font.loadAsync>[0];
 
+/**
+ * Custom assets hook responsible for loading all font assets
+ * @param assets
+ * @params fonts
+ * @returns boolean
+ */
 const useLoadAssets = (assets: number[], fonts: FontSource): boolean => {
   const [ready, setReady] = useState(false);
 

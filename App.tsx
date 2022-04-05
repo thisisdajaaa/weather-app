@@ -1,13 +1,14 @@
+import React, { useState, useEffect, useCallback } from "react";
 import Constants from "expo-constants";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { useLoadAssets } from "@app/hooks";
-import { RootNavigation } from "@app/navigation";
+import { Provider } from "react-redux";
 import { InitialState, NavigationContainer } from "@react-navigation/native";
-import React, { useState, useEffect, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import useMount from "src/hooks/useMount";
 import * as SplashScreen from "expo-splash-screen";
+import { useLoadAssets, useMount } from "@app/hooks";
+import { RootNavigation } from "@app/navigation";
 import { internetCheck } from "@app/utils";
+import store from "@app/redux/store";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -68,10 +69,12 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer {...{ onStateChange, initialState }}>
-        <RootNavigation />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <NavigationContainer {...{ onStateChange, initialState }}>
+          <RootNavigation />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </Provider>
   );
 }

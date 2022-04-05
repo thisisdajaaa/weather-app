@@ -1,12 +1,21 @@
 import { useEffect } from "react";
 import { Asset } from "expo-asset";
 
-const usePromiseAll = (promises: Promise<void | Asset[]>[], cb: () => void) =>
+/**
+ * Custom promise hook responsible for processing the promises array
+ * @param promises
+ * @param callback
+ * @returns void
+ */
+const usePromiseAll = (
+  promises: Promise<void | Asset[]>[],
+  callback: () => void
+) =>
   useEffect(() => {
     (async () => {
       await Promise.all(promises);
 
-      cb();
+      callback();
     })();
   });
 

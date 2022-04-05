@@ -1,10 +1,3 @@
-/**
- *
- * Text
- * @format
- *
- */
-
 import React, { FC } from "react";
 import { Text as RnText } from "react-native-elements";
 
