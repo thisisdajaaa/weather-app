@@ -59,7 +59,6 @@ This page should automatically open in your browser. You can choose to run it in
 | **src/styles**/\*             | Common styles                                                |
 | **src/utils**/\*              | Utility functions                                            |
 | .env.sample                   | Project environment variables                                |
-| .eslintignore                 | Folder and files ignored by eslint                           |
 | .gitignore                    | Folder and files ignored by git.                             |
 | app.json                      | App configurations by expo                                   |
 | App.tsx                       | Entry point for the applicatinon                             |
