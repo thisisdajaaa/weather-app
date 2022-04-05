@@ -11,9 +11,9 @@
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/)
-- React Native
-- TypeScript
-- Expo
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Expo](https://docs.expo.dev/)
 - Expo app (iOs or Android)
 
 ## Getting Started
