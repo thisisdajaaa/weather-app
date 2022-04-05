@@ -5,11 +5,10 @@
  */
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-
+import { useAuth } from "@app/hooks";
 import LandingScreen from "@app/screens/Landing";
 import HomeScreen from "@app/screens/Home";
-import { useAuth } from "@app/hooks";
-import { useNavigation } from "@react-navigation/native";
+import WeatherScreen from "@app/screens/Weather";
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
@@ -19,16 +18,17 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigation = () => {
   const { isAuthenticated } = useAuth();
-  const { navigate } = useNavigation();
-
-  React.useEffect(() => {
-    !isAuthenticated && navigate("Landing");
-  }, [isAuthenticated]);
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Landing" component={LandingScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      {!isAuthenticated ? (
+        <Stack.Screen name="Landing" component={LandingScreen} />
+      ) : (
+        <>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Weather" component={WeatherScreen} />
+        </>
+      )}
     </Stack.Navigator>
   );
 };

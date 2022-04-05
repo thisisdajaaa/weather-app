@@ -1,20 +1,45 @@
 import React, { FC } from "react";
 import { Header as RnHeader } from "react-native-elements";
+import { useDispatch } from "react-redux";
+import { FontAwesome } from "@expo/vector-icons";
+import { theme } from "@app/styles";
+import { authClient } from "@app/utils";
+import { actions as authActions } from "@app/redux/auth";
+import { actions as locationActions } from "@app/redux/location";
+import { useAuth } from "@app/hooks";
+import Button from "@app/components/Button";
 
 import type { PropsType } from "./types";
 import HeaderStyles from "./styles";
-import { theme } from "@app/styles";
-import { FontAwesome } from "@expo/vector-icons";
 
 const Header: FC<PropsType> = (props) => {
-  const {
-    centerComponent,
-    containerStyle,
-    placement,
-    rightComponent,
-    barStyle,
-    hasBottomDivider,
-  } = props;
+  const { centerComponent, hasBottomDivider } = props;
+
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useAuth();
+
+  const { logout } = authClient();
+
+  const handleLogout = async () => {
+    await logout();
+    dispatch(authActions.setAuthLogout());
+    dispatch(locationActions.resetLocation());
+  };
+
+  const renderLeftComponent = () => (
+    <FontAwesome name="cloud" size={24} color={theme.colors.black} />
+  );
+
+  const renderRightComponent = () =>
+    isAuthenticated ? (
+      <Button
+        onPress={() => handleLogout()}
+        titleStyle={HeaderStyles.txtLogout}
+        buttonStyle={HeaderStyles.btnLogout}
+        containerStyle={HeaderStyles.logoutContainer}
+        title="Logout"
+      />
+    ) : undefined;
 
   return (
     <RnHeader
@@ -22,18 +47,14 @@ const Header: FC<PropsType> = (props) => {
         backgroundColor: "transparent",
         translucent: true,
       }}
-      placement={placement}
-      barStyle={barStyle ?? "dark-content"}
       containerStyle={
         hasBottomDivider
           ? HeaderStyles.dividerContainer
-          : [HeaderStyles.container, containerStyle]
+          : HeaderStyles.container
       }
-      leftComponent={
-        <FontAwesome name="cloud" size={24} color={theme.colors.black} />
-      }
+      leftComponent={renderLeftComponent()}
       centerComponent={centerComponent}
-      rightComponent={rightComponent}
+      rightComponent={renderRightComponent()}
     />
   );
 };

@@ -10,6 +10,18 @@ const HeaderStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     borderBottomWidth: 1,
   },
+  txtLogout: {
+    ...theme.textLight,
+    textAlign: "center",
+    fontWeight: "700",
+  },
+  btnLogout: {
+    borderRadius: 3,
+    backgroundColor: theme.colors.dark100,
+  },
+  logoutContainer: {
+    width: 86,
+  },
 });
 
 export default HeaderStyles;

@@ -18,26 +18,23 @@ const Button: FC<PropsType> = (props) => {
     type = "solid",
     disabled,
     loading,
-    icon,
-    titleStyle,
-    buttonStyle,
     containerStyle,
+    buttonStyle,
+    titleStyle,
     onPress,
   } = props;
 
   return (
     <RnButton
-      type={type}
-      activeOpacity={OPACITY}
-      raised
-      icon={icon}
       title={title}
-      onPress={onPress}
-      loading={loading}
-      disabled={disabled}
+      activeOpacity={OPACITY}
       titleStyle={titleStyle}
       buttonStyle={[ButtonStyles.container, buttonStyle]}
       containerStyle={containerStyle}
+      onPress={onPress}
+      disabled={disabled}
+      type={type}
+      loading={loading}
     />
   );
 };
