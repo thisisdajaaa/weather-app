@@ -13,14 +13,14 @@ const HomeStyles = StyleSheet.create({
   },
   displayContainer: {
     width: 180,
-    marginTop: 36,
+    marginTop: 16,
     alignSelf: "center",
   },
   errorMessage: {
     ...theme.textLight,
-    color: theme.colors.red100,
-    marginLeft: 14,
+    marginLeft: 12,
     marginTop: 4,
+    color: theme.colors.red100,
   },
 });
 

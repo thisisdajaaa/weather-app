@@ -16,7 +16,10 @@ const Profile: React.FC<PropsType> = (props) => {
       </View>
       <View style={ProfileStyles.row}>
         <Text text={`Github URL: `} textStyle={ProfileStyles.txtLabel} />
-        <Text text={String(nickname)} textStyle={ProfileStyles.txtValue} />
+        <Text
+          text={`https://github.com/${String(nickname)}`}
+          textStyle={ProfileStyles.txtValue}
+        />
       </View>
     </View>
   );

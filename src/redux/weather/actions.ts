@@ -48,6 +48,7 @@ const callWeatherApi =
           main: data.weather[0].main,
           pressure: data.main.pressure,
           humidity: data.main.humidity,
+          date: new Date().toLocaleDateString(),
         })
       );
     } catch (error) {

@@ -7,6 +7,7 @@ const ProfileStyles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    flexWrap: "wrap",
   },
   txtLabel: {
     ...theme.textSemiBold,

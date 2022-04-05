@@ -7,6 +7,7 @@ const initialWeather: FormattedWeatherResponse = {
   main: null,
   pressure: null,
   humidity: null,
+  date: null,
 };
 
 const initialWeatherResponse: ResponseState<FormattedWeatherResponse> = {

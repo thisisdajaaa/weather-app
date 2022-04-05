@@ -15,12 +15,12 @@ const DataTable: React.FC<PropsType> = (props) => {
 
         return (
           <View key={`row-${tableIndex}`} style={DataTableStyles.row}>
-            {row.map((field, rowIndex) => {
+            {row.map((column, rowIndex) => {
               const dateColumn = rowIndex === 0;
 
               return (
                 <View
-                  key={`field-${rowIndex}`}
+                  key={`column-${rowIndex}`}
                   style={[
                     DataTableStyles.column,
                     dateColumn
@@ -29,7 +29,7 @@ const DataTable: React.FC<PropsType> = (props) => {
                   ]}
                 >
                   <Text
-                    text={String(field)}
+                    text={String(column)}
                     textStyle={
                       header ? DataTableStyles.headers : DataTableStyles.field
                     }

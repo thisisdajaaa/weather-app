@@ -59,4 +59,5 @@ export type FormattedResponse = {
   main: string | null;
   pressure: number | null;
   humidity: number | null;
+  date: string | null;
 };

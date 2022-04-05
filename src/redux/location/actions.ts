@@ -6,6 +6,7 @@ import { ResponseError } from "@app/redux/api-models/common";
 import { BaseResponse } from "@app/redux/api-models/location";
 
 import { locationActions } from "./slices";
+import { isEmpty } from "lodash";
 
 const {
   setLocationRequest,
@@ -30,7 +31,11 @@ const callLocationApi =
         payload
       );
 
-      dispatch(setLocationSuccess(response?.data));
+      if (!isEmpty(response?.data)) {
+        dispatch(setLocationSuccess(response?.data));
+      } else {
+        dispatch(setLocationFailure("Invalid value has been entered."));
+      }
     } catch (error) {
       dispatch(setLocationFailure(error as ResponseError));
     }
