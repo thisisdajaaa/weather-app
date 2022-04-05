@@ -6,7 +6,6 @@ import { ResponseError } from "@app/redux/api-models/common";
 import { BaseResponse } from "@app/redux/api-models/location";
 
 import { locationActions } from "./slices";
-import { isEmpty } from "lodash";
 
 const {
   setLocationRequest,
@@ -15,12 +14,24 @@ const {
   resetLocation,
 } = locationActions;
 
+/**
+ * Trigger's the axios call for the locations GET method
+ * @param query
+ * @returns query output
+ */
 const getLocationsData = (query: string) => {
   return locationInstance.get<BaseResponse>(
     `direct?q=${query}&limit=5&appid=${OPEN_WEATHER_MAP_KEY}`
   );
 };
 
+/**
+ * Processes the location API call
+ * and stores the corresponding data
+ * in redux state
+ * @param payload
+ * @returns void
+ */
 const callLocationApi =
   (payload: string): AppThunk =>
   async (dispatch: AppDispatch) => {
@@ -31,11 +42,7 @@ const callLocationApi =
         payload
       );
 
-      if (!isEmpty(response?.data)) {
-        dispatch(setLocationSuccess(response?.data));
-      } else {
-        dispatch(setLocationFailure("Invalid value has been entered."));
-      }
+      dispatch(setLocationSuccess(response?.data));
     } catch (error) {
       dispatch(setLocationFailure(error as ResponseError));
     }

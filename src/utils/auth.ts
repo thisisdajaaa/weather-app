@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 import { AUTH0_CLIENT_ID, AUTH_CLIENT_DOMAIN } from "@env";
 import { storage } from "./storage";
 import { Platform } from "react-native";
-import { AuthSessionData } from "@app/types/auth";
+import type { AuthSessionData } from "@app/types/auth";
 
 const authClient = () => {
   /**

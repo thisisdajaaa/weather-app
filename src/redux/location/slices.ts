@@ -18,10 +18,7 @@ const locationSlice = createSlice({
       state.locationResponse.isLoading = false;
       state.locationResponse.response = payload;
     },
-    setLocationFailure: (
-      state,
-      { payload }: PayloadAction<ResponseError | string>
-    ) => {
+    setLocationFailure: (state, { payload }: PayloadAction<ResponseError>) => {
       state.locationResponse.isLoading = false;
       state.locationResponse.error = payload;
     },

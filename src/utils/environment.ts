@@ -1,7 +1,12 @@
 import { Alert, BackHandler } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 
-export const internetCheck = () =>
+/**
+ * Checks if there is any internet network detected
+ * in the running device
+ * @returns Promise<void>
+ */
+export const checkInternet = () =>
   NetInfo.fetch().then((state) => {
     if (!state.isConnected) {
       Alert.alert(
@@ -13,7 +18,7 @@ export const internetCheck = () =>
             onPress: () => BackHandler.exitApp(),
             style: "cancel",
           },
-          { text: "ok", onPress: () => internetCheck() },
+          { text: "ok", onPress: () => checkInternet() },
         ],
         { cancelable: false }
       );

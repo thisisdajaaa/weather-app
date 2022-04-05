@@ -15,6 +15,11 @@ const {
   resetWeather,
 } = weatherActions;
 
+/**
+ * Trigger's the axios call for the weather GET method
+ * @param query
+ * @returns query output
+ */
 const getCurrentWeatherData = (coordinates: Coordinates) => {
   const { latitude, longitude } = coordinates;
 
@@ -25,6 +30,13 @@ const getCurrentWeatherData = (coordinates: Coordinates) => {
   );
 };
 
+/**
+ * Processes the weather API call
+ * and stores the corresponding data
+ * in redux state
+ * @param payload
+ * @returns void
+ */
 const callWeatherApi =
   (payload: Coordinates): AppThunk =>
   async (dispatch: AppDispatch) => {

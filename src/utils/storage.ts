@@ -1,5 +1,9 @@
 import * as SecureStore from "expo-secure-store";
 
+/**
+ * Local storage handler
+ * @returns storeObject, getObject, storeValue, getValue, deleteKey
+ */
 const storage = {
   storeObject: async (key: string, value: any): Promise<void> => {
     const jsonValue = JSON.stringify(value);

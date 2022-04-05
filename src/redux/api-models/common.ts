@@ -5,5 +5,5 @@ export type ResponseError = AxiosError;
 export type ResponseState<T> = {
   response: T;
   isLoading: boolean;
-  error?: ResponseError | string;
+  error?: ResponseError;
 };
