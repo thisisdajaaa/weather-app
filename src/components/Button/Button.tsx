@@ -26,7 +26,7 @@ const Button: FC<PropsType> = (props) => {
   return (
     <RnButton
       title={title}
-      activeOpacity={0.8}
+      activeOpacity={0.7}
       titleStyle={titleStyle}
       buttonStyle={[ButtonStyles.container, buttonStyle]}
       containerStyle={containerStyle}
